@@ -16,7 +16,10 @@ public class AnnouncementController {
 
     @GetMapping("/")
     public String announcement(Model model) {
-        return null;
+
+        model.addAttribute("announcements", announcementService.findAll());
+
+        return "announcement/announcements";
     }
 
 
