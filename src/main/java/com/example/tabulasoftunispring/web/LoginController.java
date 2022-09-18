@@ -1,4 +1,4 @@
-package com.example.tabulasoftunispring.login;
+package com.example.tabulasoftunispring.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

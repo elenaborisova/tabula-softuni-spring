@@ -1,4 +1,4 @@
-package com.example.tabulasoftunispring.security;
+package com.example.tabulasoftunispring.services.impl;
 
 import com.example.tabulasoftunispring.models.entities.UserEntity;
 import com.example.tabulasoftunispring.repositories.UserRepository;
