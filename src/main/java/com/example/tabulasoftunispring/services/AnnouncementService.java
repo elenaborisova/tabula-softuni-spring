@@ -7,4 +7,6 @@ import java.util.List;
 public interface AnnouncementService {
 
     List<AnnouncementDto> findAll();
+
+    void cleanUpOldAnnouncement();
 }
