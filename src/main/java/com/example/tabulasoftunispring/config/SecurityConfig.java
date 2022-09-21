@@ -1,5 +1,6 @@
 package com.example.tabulasoftunispring.config;
 
+import com.example.tabulasoftunispring.handlers.OAuth2UserAuthSuccessHandler;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.security.servlet.PathRequest;
@@ -20,6 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final UserDetailsService tabulaUserDetailsService;
     private final PasswordEncoder passwordEncoder;
+    private final OAuth2UserAuthSuccessHandler oAuth2UserAuthSuccessHandler;
 
     @Override
     protected void configure(HttpSecurity httpSecurity) throws Exception {
@@ -39,7 +41,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .logoutUrl("/logout")
                     .logoutSuccessUrl("/login")
                     .invalidateHttpSession(true)
-                    .deleteCookies("JSESSIONID");
+                    .deleteCookies("JSESSIONID")
+                .and()
+                    .oauth2Login()
+                    .loginPage("/login")
+                    .successHandler(oAuth2UserAuthSuccessHandler);
     }
 
     @Autowired
