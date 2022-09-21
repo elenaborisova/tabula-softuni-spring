@@ -34,7 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .formLogin()
                     .loginPage("/login")
                     .loginProcessingUrl("/login/authenticate")
-                    .failureForwardUrl("/login?param.error=bad_credentials")
+                    .failureForwardUrl("/login-error")
                     .successForwardUrl("/home")
                 .and()
                     .logout()
