@@ -33,9 +33,11 @@ public class FieldMatchValidator implements ConstraintValidator<FieldMatch, Obje
         if (!valid) {
             context
                     .buildConstraintViolationWithTemplate(message)
-                    .addPropertyNode(firstFieldName)
-//                    .addPropertyNode(secondFieldName)
-                    .addConstraintViolation()
+                        .addPropertyNode(firstFieldName)
+                        .addConstraintViolation()
+                    .buildConstraintViolationWithTemplate(message)
+                        .addPropertyNode(secondFieldName)
+                        .addConstraintViolation()
                     .disableDefaultConstraintViolation();
         }
 
