@@ -34,4 +34,17 @@ public class AnnouncementServiceImpl implements AnnouncementService {
         announcementRepository.deleteByUpdatedOnBefore(endTime);
     }
 
+    @Override
+    public void createOrUpdateAnnouncement(AnnouncementDto announcementDto) {
+        AnnouncementEntity announcementEntity = AnnouncementMapper.INSTANCE
+                .mapAnnouncementDtoToEntity(announcementDto);
+
+        if (announcementEntity.getCreatedOn() == null) {
+            announcementEntity.setCreatedOn(Instant.now());
+        }
+        announcementEntity.setUpdatedOn(Instant.now());
+
+        announcementRepository.save(announcementEntity);
+    }
+
 }
